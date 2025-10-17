@@ -1,6 +1,6 @@
 module fourinarow/backend
 
-go 1.25
+go 1.25.0
 
 require (
 	github.com/Shopify/sarama v1.34.0
