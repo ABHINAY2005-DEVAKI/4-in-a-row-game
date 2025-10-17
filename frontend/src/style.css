@@ -1,0 +1,287 @@
+/* Global Game Theme */
+/* Global Game Theme */
+body {
+    /* Changed font to a more game-friendly, modern sans-serif */
+    font-family: 'Poppins', sans-serif;
+    
+    /* --- Base: Deeper, more dynamic background for a dramatic feel --- */
+    background-color: #0c1a2c; /* Base dark color */
+    background-image: 
+        /* Layer 1: Subtle Glowing Grid */
+        linear-gradient(to right, rgba(66, 179, 255, 0.05) 1px, transparent 1px), 
+        linear-gradient(to bottom, rgba(66, 179, 255, 0.05) 1px, transparent 1px),
+        
+        /* Layer 2: Radial Spotlights/Nebula Effect in the Corners */
+        radial-gradient(circle at 10% 10%, rgba(48, 78, 121, 0.4) 0%, transparent 20%),
+        radial-gradient(circle at 90% 90%, rgba(30, 61, 90, 0.3) 0%, transparent 20%),
+        
+        /* Layer 3: Main Dark Gradient */
+        radial-gradient(circle at center, #1e3d5a 0%, #0c1a2c 100%);
+        
+    /* Set sizes for the grid and background */
+    background-size: 50px 50px, 50px 50px, auto, auto, auto;
+
+    color: #f0f0f0; /* Light text for high contrast */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0 20px;
+}
+
+/* Game Title */
+h1 {
+    text-align: center;
+    font-size: 4.5rem; /* Larger, more impactful title */
+    color: #ffcc00; /* Gold/Yellow for a 'trophy' look */
+    /* Stronger, more dramatic text shadow */
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.7), 0 4px 5px rgba(0, 0, 0, 0.8);
+    margin: 30px 0 20px 0;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+/* Primary Buttons */
+button {
+    margin: 8px;
+    padding: 12px 24px;
+    /* Futuristic/Metallic button look */
+    background: linear-gradient(180deg, #66b3ff 0%, #3399ff 100%);
+    border: 2px solid #0059b3;
+    border-radius: 20px; /* More distinctive shape */
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #0c1a2c;
+    transition: all 0.2s ease-in-out;
+    /* Prominent, lifted shadow */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    text-transform: uppercase;
+}
+
+button:hover {
+    transform: translateY(-4px) scale(1.05); /* More pronounced lift */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 15px #ffcc00; /* Adding a subtle glow on hover */
+    background: linear-gradient(180deg, #ffcc00 0%, #ff9900 100%);
+    color: #0c1a2c;
+    border-color: #ff9900;
+}
+
+/* Input Fields (for player names, etc.) */
+input {
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 12px;
+    border: 3px solid #66b3ff; /* Matching game theme color */
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    background-color: #1e3d5a;
+    color: #fff;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+input::placeholder {
+    color: #99cfff;
+}
+
+input:focus {
+    border-color: #ffcc00; /* Focus glow */
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
+    background-color: #0c1a2c;
+}
+
+/* Game Board - The Central Game Element */
+.board {
+    display: grid;
+    grid-template-columns: repeat(7, 70px); /* Slightly larger cells */
+    grid-template-rows: repeat(6, 70px);
+    gap: 8px; /* Slightly larger gap */
+    margin-top: 30px;
+    /* Deep blue/black background for the board, like a sci-fi console */
+    background: #000000;
+    padding: 20px;
+    border-radius: 25px;
+    /* Aggressive shadow for depth and framing */
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(0, 0, 0, 0.5);
+    border: 5px solid #ffcc00; /* Gold frame */
+}
+
+/* Individual Cell/Slot */
+.cell {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    /* Default cell state: translucent/empty look */
+    background: radial-gradient(circle at center, #3a5c88 0%, #1e3d5a 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+    /* Subtle inner shadow to make it look like a concave slot */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+    position: relative;
+    overflow: hidden; /* Important for 'token drop' visuals */
+}
+
+/* Player 1 Token */
+.cell.P1 {
+    /* Brighter, more saturated red */
+    background: radial-gradient(circle at 30% 30%, #ff9999 0%, red 60%, #cc0000 100%);
+    /* Stronger token glow */
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.8), inset 0 0 10px rgba(0, 0, 0, 0.5);
+    animation: token-drop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Player 2 Token */
+.cell.P2 {
+    /* Brighter, more saturated yellow */
+    background: radial-gradient(circle at 30% 30%, #ffff99 0%, yellow 60%, #ffcc00 100%);
+    /* Stronger token glow */
+    box-shadow: 0 0 15px rgba(255, 255, 0, 0.8), inset 0 0 10px rgba(0, 0, 0, 0.5);
+    animation: token-drop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Winning Tokens - Highlighting the win */
+.cell.winning {
+    /* Intense winning glow and animation */
+    box-shadow: 0 0 25px 8px #39ff14 inset, 0 0 15px 5px #39ff14; /* Neon green */
+    transform: scale(1.15) rotateZ(5deg); /* Spin/pop effect */
+    border: 4px solid #39ff14;
+}
+
+/* Drop Buttons (Above the board) */
+.drop-button {
+    width: 70px; /* Matches cell width */
+    height: 40px;
+    /* Sleek, interactive blue arrow/button */
+    background: linear-gradient(180deg, #66b3ff, #3399ff);
+    border: 2px solid #0059b3;
+    border-radius: 10px 10px 4px 4px;
+    cursor: pointer;
+    font-weight: 900;
+    font-size: 1.5rem;
+    line-height: 0;
+    color: #0c1a2c;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.drop-button:hover {
+    background: linear-gradient(180deg, #ffcc00, #ff9900);
+    transform: scale(1.1);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
+    border-color: #ff9900;
+}
+
+/* Game Status / Info Panel */
+.status {
+    margin-top: 25px;
+    padding: 15px 30px;
+    font-weight: 800;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    /* High-contrast status bar */
+    background: #ff9900;
+    color: #0c1a2c;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Leaderboard (Game Results) */
+.leaderboard-container {
+    margin-top: 25px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+    border: 1px solid #304e79;
+}
+
+ol {
+    padding-left: 30px;
+    color: #fff;
+    list-style-type: none; /* Custom list appearance */
+}
+
+ol li {
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    position: relative;
+    padding-left: 20px;
+}
+
+ol li:before {
+    content: '★'; /* Star bullet point */
+    position: absolute;
+    left: 0;
+    color: #ffcc00;
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+/* Game Results Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.1); /* Slightly transparent for game feel */
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    color: #fff;
+    border: 1px solid #66b3ff;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    font-weight: 500;
+    border-bottom: 1px solid #304e79;
+}
+
+th {
+    background: #0059b3;
+    color: #ffcc00;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-bottom: 2px solid #ffcc00;
+}
+
+tr:hover {
+    background: rgba(255, 255, 255, 0.15); /* Light hover effect */
+}
+
+p {
+    color: #99cfff;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* Footer / small notes */
+.footer-note {
+    margin-top: 40px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+/* Keyframe Animation for a 'token drop' effect */
+@keyframes token-drop {
+    0% {
+        transform: translateY(-100px) scale(0.5);
+        opacity: 0;
+    }
+    80% {
+        transform: translateY(10px) scale(1.05);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}

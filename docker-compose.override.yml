@@ -1,0 +1,11 @@
+
+
+services:
+  backend:
+    command: >
+      sh -c "
+      echo '⏳ Waiting for DB...';
+      until nc -z db 3306; do sleep 1; done;
+      echo '✅ DB ready!';
+      ./server
+      "

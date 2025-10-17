@@ -1,0 +1,54 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #b3e0ff;
+  color: #00008B;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+}
+
+.app h1 {
+  text-align: center;
+}
+
+.join-box {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #00008B;
+  margin: 2px;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+}
+
+.cell.p1 {
+  background-color: red;
+}
+
+.cell.p2 {
+  background-color: yellow;
+}
+
+.leaderboard {
+  margin-top: 20px;
+}
